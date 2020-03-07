@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+<title>Delos Video Speed Setter</title>
+
+<style>
+
+#renderVideo {
+  width: 800px;
+}
+
+.speedButton {
+  background: black;
+  border: none;
+  color: white;
+  width: 50px;
+  font-size: 30px;
+}
+
+#plusButton {
+  background: red;
+}
+
+#minusButton {
+  background: green;
+}
+
+#currSpeed {
+  font-size: 25px;
+  text-align: center;
+}
+
+#setVideoButton {
+	box-shadow:inset 0px 1px 0px 0px #54a3f7;
+	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+	background-color:#007dc1;
+	border-radius:3px;
+	border:1px solid #124d77;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:14px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #154682;
+}
+#setVideoButton:hover {
+	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	background-color:#0061a7;
+}
+
+#videoURL
+{
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background: #fff;
+  width: 800px;
+	margin-bottom: 4%;
+	border: 1px solid #ccc;
+	padding: 14px;
+	color: #555;
+	font: 95% Arial, Helvetica, sans-serif;
+}
+
+</style>
+</head>
+
+<body>
+<div id="renderVideoDiv">
+  <video id="renderVideo" controls>
+    <source id="videoSource" type="video/mp4">
+  </video>
+</div>
+<br/>
+
+<button class="speedButton" id="minusButton">-</button>
+<button class="speedButton" id="plusButton">+</button>
+<input id="currSpeed" type="number" readonly="true" value="1.0" />
+<br/>
+<br/>
+
+<div id="inputDiv">
+  <input type="text" id="videoURL" />
+  <button id="setVideoButton" onclick="setVideo()">Set video</button>
+</div>
+
+
+<script>
+
+var vid = document.getElementById("renderVideo");
+var minusButton = document.getElementById("minusButton");
+var plusButton = document.getElementById("plusButton");
+var currSpeed = document.getElementById("currSpeed");
+
+function setNewVal(val) {
+  vid.playbackRate = val;
+  currSpeed.value = val.toFixed(2);
+}
+
+minusButton.onclick = function() {
+  var currVal = parseFloat(currSpeed.value);
+  var newVal = currVal - 0.1;
+  setNewVal(newVal);
+}
+
+plusButton.onclick = function() {
+  var currVal = parseFloat(currSpeed.value)
+  var newVal = currVal + 0.1;
+  setNewVal(newVal);
+}
+
+function setVideo() {
+  var url = document.getElementById("videoURL").value;
+  var videoID = url.split("=").pop();
+  var newSource = "https://delos-media.uoa.gr:443/delosrc/resources/vl/" +
+                  videoID + "/" + videoID + ".mp4";
+  document.getElementById("videoSource").src = newSource;
+  vid.load();
+  vid.play();
+}
+
+</script> 
+
+</body>
+
+</html>
