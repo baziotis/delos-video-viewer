@@ -71,6 +71,13 @@
   font: 95% Arial, Helvetica, sans-serif;
 }
 
+#usage {
+  background: #FAEBD7;
+  width: 800px;
+  padding: 20px;
+  font-family: Trebuchet MS, sans-serif;
+}
+
 </style>
 </head>
 
@@ -90,9 +97,17 @@
 
 <div id="inputDiv">
   <input type="text" id="videoURL" />
-  <button id="setVideoButton" onclick="setVideo()">Set video</button>
+  <button id="setVideoButton" onclick="setVideo()">Set Video</button>
 </div>
 
+<div id="usage">
+<h1>Usage</h1>
+<p>You can grab the link of any video URL in Delos and paste it into the big textbox.
+Click "Set Video" and you can then watch it while also setting the speed with the + and - buttons.</p>
+
+<p>Note: To grab the URL, you click into the specific title of the video. That sends you in a page that for every video says
+"Resource Details" in the title of the page (i.e. in the tab). You want to grab the URL of this page.</p>
+</div>
 
 <script>
 
