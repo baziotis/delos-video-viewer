@@ -16,6 +16,9 @@ and watch the video while also being able to control the speed in real-time.
 
 # Usage
 
+You can access it online here: http://users.uoa.gr/~sdi1600105/delos-video-viewer/
+
+## Offline usage
 Open the file `viewer.html` in your favorite browser. Then, you can grab the link of any video URL
 in Delos and paste it into the big textbox. Click set video and you can
 then watch it while also setting the speed with the + and - buttons.
